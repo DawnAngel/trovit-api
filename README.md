@@ -19,7 +19,7 @@ The first version is the "sampleRequire.php" is the easiest one but it doesn't r
 
 The second version is the "sampleAutoloader.php" is not that easy to understand but is more powerfull with a ready to use namespacing system.
 
-Before testing any of this 2 implementations you'll need to replace the following "<YOUR-TOKEN-ID>" in the code with your real API token key.
+Before testing any of this 2 implementations you'll need to replace the following "\<YOUR-TOKEN-ID\>" in the code with your real API token key.
 
 ```
 /**
