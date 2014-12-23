@@ -21,7 +21,7 @@ The second version is the "sampleAutoloader.php" is not that easy to understand 
 
 Before testing any of this 2 implementations you'll need to replace the following "\<YOUR-TOKEN-ID\>" in the code with your real API token key.
 
-```
+```php
 /**
  * TrovitApi Token:
  *
@@ -30,6 +30,9 @@ Before testing any of this 2 implementations you'll need to replace the followin
  * https://publishers.trovit.com/
  */
 define('TROVIT_API_TOKEN', '<YOUR-TOKEN-ID>');
+
+// Set TrovitApi Token
+TrovitApi::setToken(TROVIT_API_TOKEN);
 ```
 
 Thanks for using this library, I hope you enjoy it.
