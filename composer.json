@@ -1,0 +1,23 @@
+{
+    "name": "dawnangel/trovit-api",
+    "description": "A simple PHP implementation of Trovit Affiliates API http://publishers.trovit.com",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Eric Pinto",
+            "email": "ericpinto1985@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-0" : {
+            "DawnAngel\\Trovit-Api" : "Lib"
+        }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/DawnAngel/trovit-api"
+        }
+    ]
+}
