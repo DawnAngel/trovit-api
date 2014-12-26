@@ -5,6 +5,8 @@ trovit-api
 
 A simple PHP implementation of Trovit Affiliates API
 
+Tests Status [![Build Status](https://travis-ci.org/DawnAngel/trovit-api.svg?branch=master)](https://travis-ci.org/DawnAngel/trovit-api)
+
 Configuration
 -------------
 
