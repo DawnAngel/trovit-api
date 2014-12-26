@@ -1,6 +1,8 @@
 trovit-api
 ==========
 
+[![Latest Stable Version](https://poser.pugx.org/dawnangel/trovit-api/v/stable.svg)](https://packagist.org/packages/dawnangel/trovit-api) [![Total Downloads](https://poser.pugx.org/dawnangel/trovit-api/downloads.svg)](https://packagist.org/packages/dawnangel/trovit-api) [![License](https://poser.pugx.org/dawnangel/trovit-api/license.svg)](https://packagist.org/packages/dawnangel/trovit-api)
+
 A simple PHP implementation of Trovit Affiliates API
 
 Configuration

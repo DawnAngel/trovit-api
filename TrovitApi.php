@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Trovit;
+namespace DawnAngel\TrovitApi;
 
 use \Exception;
 
@@ -15,19 +15,19 @@ class TrovitApi
      * Api URI value
      * @var string
      */
-    private static $API_URI = 'http://api.trovit.com/v2/{vertical}/{resource}';
+    protected static $API_URI = 'http://api.trovit.com/v2/{vertical}/{resource}';
 
     /**
      * Api token value
      * @var string
      */
-    private static $TOKEN;
+    protected static $TOKEN;
 
     /**
      * Request options cache
      * @var array
      */
-    private static $REQUEST_OPTIONS_CACHE;
+    protected static $REQUEST_OPTIONS_CACHE;
 
     const RESOURCE_ADS = 'ads';
 
@@ -47,7 +47,7 @@ class TrovitApi
 
         /** Reset the REQUEST OPTIONS when new apikey is setted */
         if (isset(self::$REQUEST_OPTIONS_CACHE)) {
-            unset(self::$REQUEST_OPTIONS_CACHE);
+            self::$REQUEST_OPTIONS_CACHE = null;
         }
     }
 
@@ -68,7 +68,7 @@ class TrovitApi
      *
      * @return array Request options
      */
-    private static function getRequestOptions()
+    protected static function getRequestOptions()
     {
         if (!isset(self::$REQUEST_OPTIONS_CACHE)) {
             self::$REQUEST_OPTIONS_CACHE = array(
@@ -80,6 +80,20 @@ class TrovitApi
         }
 
         return self::$REQUEST_OPTIONS_CACHE;
+    }
+
+    /**
+     * Handle all the data collection
+     *
+     * @param  string $url Request url
+     *
+     * @return string
+     */
+    protected static function getUrlData($url)
+    {
+        $context = stream_context_create(self::getRequestOptions());
+
+        return @file_get_contents($url, false, $context);
     }
 
 
@@ -100,22 +114,20 @@ class TrovitApi
             array($vertical, $resource),
             self::$API_URI
         );
-
-        $context     = stream_context_create(self::getRequestOptions());
         $requestUrl .= '?' . http_build_query($params);
 
         if ($debug) {
-            echo "API url: {$requestUrl}\n";
+            printf("API url: %s\n", $requestUrl);
         }
 
         try {
-            $result = @file_get_contents($requestUrl, false, $context);
+            $result = self::getUrlData($requestUrl);
         } catch (Exception $e) {
             $result = false;
         }
 
         if ($debug) {
-            echo "Request status: " . ($result === false ? 'Fail' : 'OK!');
+            printf("Request status: %s\n", $result === false ? 'Fail' : 'OK!');
         }
 
         return $result;
