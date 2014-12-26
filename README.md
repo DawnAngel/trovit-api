@@ -12,16 +12,32 @@ Before using this implementation you need to get a API token from the main Trovi
 
 https://publishers.trovit.com/
 
+First you need to signup as a Trovit Affiliate providing your business details and website.
+
+After their acceptance of your signup, you have to go to the "API Feed" section and provide some information about how you will use this API service for, accept the terms and conditions and in a short time they will provide you with the API token you need.
+
 Usage
 -----
 
-In this code you'll find 2 implementations of the TrovitApi library.
+First in your code depending if you are using the composer autoload integration or a direct "require" method you need some lines of code.
 
-The first version is the "sampleRequire.php" is the easiest one but it doesn't resolve the namespace libraries in execution time, because it just requires the main library class and use it directy.
+* For composer autoload.php:
 
-The second version is the "sampleAutoloader.php" is not that easy to understand but is more powerfull with a ready to use namespacing system.
+```php
+use DawnAngel\TrovitApi\TrovitApi;
 
-Before testing any of this 2 implementations you'll need to replace the following "\<YOUR-TOKEN-ID\>" in the code with your real API token key.
+require_once '<VENDOR_DIR>/autoload.php';
+```
+
+* For direct require:
+
+```php
+use DawnAngel\TrovitApi\TrovitApi;
+
+require_once '<TROVIT_API_LIB_DIR>/TrovitApi.php';
+```
+
+You'll need to replace the following "\<YOUR-TOKEN-ID\>" in the code with your real API token key:
 
 ```php
 /**
@@ -35,6 +51,29 @@ define('TROVIT_API_TOKEN', '<YOUR-TOKEN-ID>');
 
 // Set TrovitApi Token
 TrovitApi::setToken(TROVIT_API_TOKEN);
+```
+
+Then on the point you want to use the API request code:
+
+```php
+$apiParams = array(
+    // Main params for the request
+    'country' => 'es',
+    'what'    => 'piso',
+    'where'   => '',
+    'type'    => '2', /* 1 -> Homes for sale, 2 -> Homes for rent */
+
+    // Filter params for the request
+    'region' => 'barcelona',
+    'city'   => 'barcelona',
+
+    // Params for API configuration
+    'page'     => '1',
+    'per_page' => '10',
+    'order'    => 'relevance',
+);
+
+$ads = TrovitApi::doRequest(TrovitApi::VERTICAL_HOMES, $apiParams);
 ```
 
 Thanks for using this library, I hope you enjoy it.
