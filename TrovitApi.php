@@ -15,7 +15,7 @@ class TrovitApi
      * Api URI value
      * @var string
      */
-    protected static $API_URI = 'http://api.trovit.com/v2/{vertical}/{resource}';
+    protected static $API_URI = 'https://api.trovit.com/v2/{vertical}/{resource}';
 
     /**
      * Api token value
